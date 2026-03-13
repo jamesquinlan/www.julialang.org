@@ -1,5 +1,5 @@
 @def rss_pubdate = Date(2015, 10, 20)
-@def rss = """ JSoC 2015 project: Interactive 3D Graphics in the Browser with Compose3D | Over the last three months, I've been working on Compose3D (https://github.com/rohitvarkey/Compose3D.jl),... """
+@def rss_description = """ JSoC 2015 project: Interactive 3D Graphics in the Browser with Compose3D | Over the last three months, I've been working on Compose3D (https://github.com/rohitvarkey/Compose3D.jl),... """
 @def published = "20 October 2015"
 @def title = "JSoC 2015 project: Interactive 3D Graphics in the Browser with Compose3D"
 @def authors = """<a href="https://github.com/rohitvarkey">Rohit Varkey Thankachan</a>"""
@@ -213,7 +213,7 @@ end
 An an example for animations, I ported the Escher boids example by Ian Dunning from 2D to 3D and a screencast of the same can be found below.
 
 ~~~
-<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/Yul3iBkAVHs" frameborder="0" allowfullscreen></iframe></div>
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/Yul3iBkAVHs" style="border:none;" allowfullscreen></iframe></div>
 ~~~
 
 ## Future directions

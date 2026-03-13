@@ -1,8 +1,8 @@
 @def rss_pubdate = Date(2014, 8, 9)
-@def rss = """ JuliaCon 2014 Opening Session Presentations | Tim Holy is a Professor in the Department of Anatomy and Neurobiology at Washington University in St. Louis. He’s been involved with Julia development for over 2 years. In this presentation, Tim describes how Images.jl can be used for rapid inquiry and dissection of biomedical imaging data.... """
+@def rss_description = """ JuliaCon 2014 Opening Session Presentations | Tim Holy is a Professor in the Department of Anatomy and Neurobiology at Washington University in St. Louis. He’s been involved with Julia development for over 2 years. In this presentation, Tim describes how Images.jl can be used for rapid inquiry and dissection of biomedical imaging data.... """
 @def published = "9 August 2014"
 @def title = "JuliaCon 2014 Opening Session Presentations"
-@def authors = """<a href="https://github.com/quinnj">Jacob Quinn</a>"""  
+@def authors = """<a href="https://github.com/quinnj">Jacob Quinn</a>"""
 
 
 
@@ -17,7 +17,7 @@ Tim Holy is a Professor in the Department of Anatomy and Neurobiology at Washing
 - **GitHub:** [https://github.com/timholy](https://github.com/timholy)
 
 ~~~
-<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/FA-1B_amwt8?list=PLP8iPy9hna6TSRouJfvobfxkZFYiPSvPd" frameborder="0" allowfullscreen></iframe></div>
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/FA-1B_amwt8?list=PLP8iPy9hna6TSRouJfvobfxkZFYiPSvPd" style="border:none;" allowfullscreen></iframe></div>
 ~~~
 
 ### Pontus Stenetorp — Natural Language Processing with Julia
@@ -30,7 +30,7 @@ Pontus Stenetorp is a Japan Society for the Promotion of Science Postdoctoral Re
 
 
 ~~~
-<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/OrFxjE44COc?list=PLP8iPy9hna6TSRouJfvobfxkZFYiPSvPd" frameborder="0" allowfullscreen></iframe></div>
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/OrFxjE44COc?list=PLP8iPy9hna6TSRouJfvobfxkZFYiPSvPd" style="border:none;" allowfullscreen></iframe></div>
 ~~~
 
 
@@ -42,5 +42,5 @@ Arch Robison is a Senior Principal Engineer at Intel and is an expert in paralle
 - **GitHub:** [https://github.com/ArchRobison](https://github.com/ArchRobison)
 
 ~~~
-<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/GFTCQNYddhs?list=PLP8iPy9hna6TSRouJfvobfxkZFYiPSvPd" frameborder="0" allowfullscreen></iframe></div>
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube.com/embed/GFTCQNYddhs?list=PLP8iPy9hna6TSRouJfvobfxkZFYiPSvPd" style="border:none;" allowfullscreen></iframe></div>
 ~~~

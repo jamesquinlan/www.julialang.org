@@ -1,5 +1,5 @@
 @def rss_pubdate = Date(2016, 3, 27)
-@def rss = """ Generalizing AbstractArrays: opportunities and challenges | Somewhat unusually, this blog post is future-looking: it mostly... """
+@def rss_description = """ Generalizing AbstractArrays: opportunities and challenges | Somewhat unusually, this blog post is future-looking: it mostly... """
 @def published = "27 March 2016"
 @def title = "Generalizing AbstractArrays: opportunities and challenges"
 @def authors = """ <a href="http://holylab.wustl.edu">Tim Holy</a>"""
@@ -124,7 +124,7 @@ set the latter problem on fire.
 
 Some possible new `AbstractArray` types pose novel challenges.
 
-## ReshapedArrays ([#15449](https://github.com/JuliaLang/julia/pull/15449))
+## ReshapedArrays (#15449)
 
 These are the front-and-center motivation for this post. These are
 motivated by a desire to ensure that `reshape(A, dims)` always returns

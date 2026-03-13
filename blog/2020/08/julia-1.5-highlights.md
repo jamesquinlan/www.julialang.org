@@ -2,7 +2,7 @@
 @def authors = "Jeff Bezanson & Stefan Karpinski"
 @def published = "3 August 2020"
 @def rss_pubdate = Date(2020, 8, 3)
-@def rss = """Julia version 1.5 has been released, featuring many performance improvements and new capabilities."""
+@def rss_description = """Julia version 1.5 has been released, featuring many performance improvements and new capabilities."""
 
 
 [Julia version 1.5 has been released](https://discourse.julialang.org/t/julia-v1-5-0-has-been-released/44169).
@@ -117,7 +117,7 @@ We would like to thank [RelationalAI](https://relational.ai/) for sponsoring thi
 Improving support for parallelism is a major focus of ongoing work. Threading was introduced as an
 experimental feature way back in v0.5, and since then nearly every release has increased thread safety
 and added new features. In particular, 1.3 was a major milestone release for threading because it
-[introduced](https://julialang.org/blog/2019/07/multithreading/) the `@spawn` construct (along with
+[introduced](/blog/2019/07/multithreading/) the `@spawn` construct (along with
 all the supporting infrastructure) for composable multithreading, a la Go’s "goroutines", but with a
 focus on high-performance computing.
 
@@ -297,7 +297,7 @@ Finally, sampling from discrete collections has also gotten faster: `rand(1:100,
 
 There is a new command-line option `--bug-report=rr` which makes it trivially easy to record
 and upload [rr](https://rr-project.org/) traces to aid in fixing bugs.
-This feature is described in detail in [a separate blog post](https://julialang.org/blog/2020/05/rr).
+This feature is described in detail in [a separate blog post](/blog/2020/05/rr).
 
 ## Pkg Protocol now the default
 

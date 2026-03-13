@@ -1,8 +1,8 @@
 @def rss_pubdate = Date(2021, 10, 21)
-@def rss = """Composability in Julia: Implementing Deep Equilibrium Models via Neural ODEs"""
+@def rss_description = """Composability in Julia: Implementing Deep Equilibrium Models via Neural ODEs"""
 @def published = "21 October 2021"
 @def title = "Composability in Julia: Implementing Deep Equilibrium Models via Neural ODEs"
-@def authors = """Qiyao Wei, Frank Schäfer, Avik Pal, Chris Rackauckas"""  
+@def authors = """Qiyao Wei, Frank Schäfer, Avik Pal, Chris Rackauckas"""
 
 The [SciML Common Interface](https://docs.sciml.ai/SciMLBase/stable/) defines a complete
 set of equation solving techniques, from differential equations and optimization
@@ -12,7 +12,7 @@ between the optimized libraries being used for physical modeling and
 the techniques used in machine learning: in the composable ecosystem of Julia,
 these are one and the same. The same differential equation solvers that are
 being carefully inspected for speed and accuracy by the FDA and Moderna [for clinical trial analysis](https://pumas.ai/)
-are what's [mixed with neural networks for neural ODEs](https://julialang.org/blog/2019/01/fluxdiffeq/).
+are what's [mixed with neural networks for neural ODEs](/blog/2019/01/fluxdiffeq/).
 The same [computer algebra system](https://symbolics.juliasymbolics.org/dev/)
 that is [used to accelerate NASA launch simulations by 15,000x](https://www.youtube.com/watch?v=tQpqsmwlfY0)
 is the same one that is used in [automatically discovering physical equations](https://datadriven.sciml.ai/dev/).
@@ -27,12 +27,12 @@ We will then show how [DiffEqFlux.jl](https://diffeqflux.sciml.ai/dev/)
 can be used as a package for DEQs, showing how the composability of the
 Julia ecosystem naturally lends itself to extensions and generalizations
 of methods in machine learning literature. For background on DiffEqFlux and Neural ODEs,
-please see the previous blog post [DiffEqFlux.jl – A Julia Library for Neural Differential Equations](https://julialang.org/blog/2019/01/fluxdiffeq/).
+please see the previous blog post [DiffEqFlux.jl – A Julia Library for Neural Differential Equations](/blog/2019/01/fluxdiffeq/).
 
 (Note: If you are interested in this work and are an undergraduate or graduate
 student, we have [Google Summer of Code projects available in this area](/jsoc/projects/). This
 [pays quite well over the summer](https://developers.google.com/open-source/gsoc/help/student-stipends).
-Please join the [Julia Slack](http://julialang.org/slack/) and the #jsoc channel to discuss in more detail.)
+Please join the [Julia Slack](/slack/) and the #jsoc channel to discuss in more detail.)
 
 \toc
 
@@ -144,7 +144,7 @@ gives an efficient implementation of a DEQ without requiring any new tooling or 
 outperform the fixed-point iteration approaches by taking multiple steps at a time.
 
 The following code block creates a DEQ model. An astute reader will notice that this code looks
-awfully similar to typical [Neural ODEs implemented in Julia](https://julialang.org/blog/2019/01/fluxdiffeq/).
+awfully similar to typical [Neural ODEs implemented in Julia](/blog/2019/01/fluxdiffeq/).
 Therefore, the DEQ implementation simply adds an extra steady state layer on top
 of the ODE function, and as long as we use the correct (automatically chosen) sensitivity corresponding to
 steady state problems, we are covered.
@@ -259,7 +259,7 @@ plot(0:(length(traj) - 1), cpu(vcat(traj...)), xlabel = "Depth",
 
 ![Imgur](https://i.imgur.com/dDckk8A.png)
 
-The figure above shows ten such trajectories starting from uniformly distributed random numbers between 0 and 10. 
+The figure above shows ten such trajectories starting from uniformly distributed random numbers between 0 and 10.
 Notice that by the end, the dynamics have leveled off to a final point, and the integration cuts off when it gets
 "sufficiently close to infinity". This value at the end is the prediction of the DEQ for $y=2x$.
 **The general composability of the Julia ecosystem means that there is no "Github repository for DEQs",
@@ -376,7 +376,7 @@ function eval_loss_accuracy(loader, model, device)
     for (x, y) in loader
         x, y = x |> device, y |> device
         ŷ = model(x)
-        l += Flux.Losses.logitcrossentropy(ŷ, y) * size(x)[end]        
+        l += Flux.Losses.logitcrossentropy(ŷ, y) * size(x)[end]
         acc += sum(onecold(ŷ |> cpu) .== onecold(y |> cpu))
         ntot += size(x)[end]
     end

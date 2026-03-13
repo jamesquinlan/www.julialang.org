@@ -1,9 +1,10 @@
 @def rss_pubdate = Date(2019, 7, 30)
-@def rss = """ Julia将支持可组合的多线程并行机制 | 摩尔定律带来的免费性能提升（free lunch） free lunch 几近结束，... """
+@def rss_description = """ Julia将支持可组合的多线程并行机制 | 摩尔定律带来的免费性能提升（free lunch） free lunch 几近结束，... """
 @def published = "30 July 2019"
 @def title = "Julia将支持可组合的多线程并行机制"
 @def author = "Jeff Bezanson (JuliaHub), Jameson Nash (JuliaHub), Kiran Pamnany (Intel)"
 @def hascode = true
+@def pagelang = "zh-Hans"
 
 摩尔定律带来的[免费性能提升（free lunch）][free lunch]几近结束，
 软件性能越来越依赖于利用多个处理器核心。
@@ -444,5 +445,5 @@ Windows 具有与任务密切相关的纤程，并且 Unix 系列系统也有多
 [relationalAI]: https://relational.ai/
 [GitHub]: https://github.com/JuliaLang/julia/issues
 [Discourse]: https://discourse.julialang.org/
-[downloads page]: /downloads/
+[install page]: /install/
 [master branch]: https://github.com/JuliaLang/julia

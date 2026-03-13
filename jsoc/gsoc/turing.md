@@ -1,96 +1,88 @@
-# Turing Projects - Summer of Code
+# Turing Projects - Google Summer of Code 2026
 
-[Turing](https://turinglang.org/) is a universal probabilistic programming language embedded in Julia.
-Turing allows the user to write models in standard Julia syntax, and provide a wide range of sampling-based inference methods for solving problems across probabilistic machine learning, Bayesian statistics and data science etc.
+[Turing.jl](https://turinglang.org/) is a universal probabilistic programming language embedded in Julia.
+Turing allows the user to write statistical models in standard Julia syntax, and provides a wide range of sampling-based inference methods for solving problems across probabilistic machine learning, Bayesian statistics, and data science.
 Since Turing is implemented in pure Julia code, its compiler and inference methods are amenable to hacking: new model families and inference methods can be easily added.
 
-Below is a list of ideas for potential projects, though you are welcome to propose your own to the Turing team.
-If you are interested in exploring any of these projects, please reach out to the listed project mentors or Xianda Sun (at xs307[at]cam.ac.uk). You can find their contact information [here](https://turinglang.org/stable/team).
+For GSoC 2026 we offer projects from core AD work to scalable inference and user-facing tools.
 
-## Implementing models from PosteriorDB in Turing / Julia
+If a project interests you, contact the mentors listed below or open a discussion on the relevant GitHub repo.
+Please drop a short introduction message in the [`#turing`](https://julialang.slack.com/archives/CCYDC34A0) channel on the [Julia Slack](/slack/) and feel free to ping [Shravan Goswami](https://github.com/shravanngoswamii) there, he is a past GSoC contributor and currently active in [TuringLang](https://github.com/TuringLang/). Mentors will be happy to discuss project details, scope, and expectations, and you can find mentor contacts at [Turing team page](https://turinglang.org/team/).
 
-**Mentors:** Seth Axen, Tor Fjelde, Kai Xu, Hong Ge
+Also cross-posted on [Turing Blog](https://turinglang.org/news/).
 
-**Project difficulty:** Medium
+## Mentor Contacts on Julia Slack
 
-**Project length:** 175 hrs or 350 hrs
+| Mentor | Slack Contact |
+|--------|---------------|
+| Hong Ge | [Slack](https://julialang.slack.com/team/UCRDHV7PB) |
+| Xianda Sun | [Slack](https://julialang.slack.com/team/U03AV5JMJ8N) |
 
-**Description:**
-[posteriordb](https://github.com/stan-dev/posteriordb) is a database of 120 diverse Bayesian models implemented in Stan (with 1 example model in PyMC) with reference posterior draws, data, and metadata.
-For performance comparison and for showcasing best practices in Turing, it is useful to have Turing implementations of these models.
-The goal of this project is to implement a large subset of these models in Turing/Julia.
+## New AbstractMCMC-based Gibbs Sampler for Turing.jl and JuliaBUGS.jl
 
-For each model, we consider the following tasks:
-Correctness test: when reference posterior draws and sampler configuration are available in posteriordb, correctness of the implementation and consistency can be tested by sampling the model with the same configuration and comparing the samples to the reference draws.
-Best practices: all models must be checked to be differentiable with all Turing-supported AD frameworks.
+**Mentors**: [Hong Ge](https://github.com/yebai) and [Xianda Sun](https://github.com/sunxd3)
 
-## Improving the integration between Turing and Turing’s MCMC inference packages
+**Project difficulty**: Medium
 
-**Mentors:** Tor Fjelde, Jaime Ruiz Zapatero, Cameron Pfiffer, David Widmann
+**Project length**: 350 hrs
 
-**Project difficulty:** Easy
+Gibbs sampling is one of the most widely used inference strategies in Bayesian computation, but Turing.jl's current Gibbs implementation is tightly coupled to its internals and difficult to extend.
 
-**Project length:** 175 hrs
+This project is about designing a clean, composable Gibbs sampler built on top of the [AbstractMCMC.jl](https://github.com/TuringLang/AbstractMCMC.jl) interface so that it works perfectly across both Turing.jl and [JuliaBUGS.jl](https://github.com/TuringLang/JuliaBUGS.jl).
+Work will include:
 
-**Description:**
-Most samplers in Turing.jl implements the AbstractMCMC.jl interface, allowing a unified way for the user to interact with the samplers.
-The interface of AbstractMCMC.jl is currently very bare-bones and does not lend itself nicely to interoperability between samplers.
+- Agreeing on a minimal AbstractMCMC-compatible interface for conditional samplers.
+- Implementing the new Gibbs combinator and verifying correctness on standard models.
+- Migrating existing Turing.jl Gibbs usage to the new interface.
+- Ensuring JuliaBUGS.jl can plug in its own conditional samplers without modification.
 
-For example, it’s completely valid to compose to MCMC kernels, e.g. taking one step using the RWMH from AdvancedMH.jl, followed by taking one step using NUTS from AdvancedHMC.jl.
-Unfortunately, implementing such a composition requires explicitly defining conversions between the state returned from RWMH and the state returned from NUTS, and conversion of state from NUTS to state of RWMH.
-Doing this for one such sampler-pair is generally very easy to do, but once you have to do this for N samplers, suddenly the amount of work needed to be done becomes insurmountable.
+## Stateful Hand-Written Rules and Thread Support in Mooncake.jl
 
-One way to deal alleviate this issue would be to add a simple interface for interacting with the states of the samplers, e.g. a method for getting the current values in the state, a method for setting the current values in the state, in addition to a set of glue-methods which can be overridden in the specific case where more information can be shared between the states.
+**Mentors**: [Hong Ge](https://github.com/yebai) and [Xianda Sun](https://github.com/sunxd3)
 
-As an example of some ongoing work that attempts to take a step in this direction is: <https://github.com/TuringLang/AbstractMCMC.jl/pull/86>
+**Project difficulty**: Medium to Hard
 
-## GPU support for NormalizingFlows.jl and Bijectors.jl
+**Project length**: 350 hrs
 
-**Mentors:** Tor Fjelde, Tim Hargreaves, Xianda Sun, Kai Xu, Hong Ge
+[Mooncake.jl](https://github.com/chalk-lab/Mooncake.jl) is a source-to-source reverse-mode AD package for Julia.
+Two open issues currently limit its performance and applicability in real-world workloads.
 
-**Project difficulty:** Hard
+The first is that every hand-written `rrule!!` must allocate scratch memory on every call ([issue #403](https://github.com/chalk-lab/Mooncake.jl/issues/403)).
+Derived rules already avoid this by carrying persistent state between calls, but hand-written rules have no such mechanism.
+The fix is a `StatefulRRule` struct that holds a `Stack` of saved state, constructed via a `build_primitive_rrule` function.
+Rule authors implement `stateful_rrule!!`, which receives the current state (or `nothing` on the first call) and returns updated state alongside the usual outputs -- stack push/pop is handled automatically.
+The work is to (1) add a test that fails when a primal is allocation-free but its `rrule!!` is not, (2) audit all existing hand-written rules with that test, and (3) convert the offenders.
 
-**Project length:** 175 hrs or 350 hrs
+The second is that Mooncake currently errors on any code using `Threads.@threads` ([issue #570](https://github.com/chalk-lab/Mooncake.jl/issues/570)).
+Even a race-condition-free primal can produce race conditions on the reverse pass -- two threads may concurrently increment the same tangent element, so increments must be atomic.
+Additionally, rule caches (the stacks inside `OpaqueClosure`s) must be Task-specific; sharing them across Tasks causes pushes and pops to interleave incorrectly.
+The work involves writing rules for the `ccall`s that enter and exit threaded regions, ensuring atomic tangent updates, and making rule caches Task-local without relying on `threadid()`.
 
-**Description:**
-Bijectors.jl, a package that facilitates transformations of distributions within Turing.jl, currently lacks full GPU compatibility.
-This limitation stems partly from the implementation details of certain bijectors and also from how some distributions are implemented in the Distributions.jl package.
-NormalizingFlows.jl, a newer addition to the Turing.jl ecosystem built atop Bijectors.jl, offers a user-friendly interface and utility functions for training normalizing flows but shares the same GPU compatibility issues.
+## Pigeons.jl Integration with Turing and JuliaBUGS via AbstractMCMC
 
-The aim of this project is to enhance GPU support for both Bijectors.jl and NormalizingFlows.jl.
+**Mentors**: [Xianda Sun](https://github.com/sunxd3)
 
-## Batched support for NormalizingFlows.jl and Bijectors.jl
+**Project difficulty**: Medium to Hard
 
-**Mentors:** Tor Fjelde, Xianda Sun, David Widmann, Hong Ge
+**Project length**: 350 hrs
 
-**Project difficulty:** Medium
+[Pigeons.jl](https://github.com/Julia-Tempering/Pigeons.jl) implements parallel tempering and related algorithms that are particularly effective for multimodal and high-dimensional posteriors.
+This project has two related goals that together make Pigeons a first-class citizen of the TuringLang ecosystem.
 
-**Project length:** 350 hrs
+The first part is documentation and examples.
+Turing.jl models can already be used as targets for Pigeons, but the combination is under-documented.
+The contributor will produce reproducible tutorials that walk through common use cases -- multimodal posteriors, hierarchical models, models with difficult geometry -- and compare Pigeons against HMC/NUTS on the same problems.
+These will be published on the Turing website and any integration rough edges found along the way will be fixed.
 
-**Description:**
-This project aims to introduce a `batched mode` to Bijectors.jl and NormalizingFlows.jl, which are built on top of Bijectors.jl.
+The second part is implementing the efficient Gibbs sampler from [arXiv:2410.03630](https://arxiv.org/abs/2410.03630) in [JuliaBUGS.jl](https://github.com/TuringLang/JuliaBUGS.jl).
+The paper shows that by exploiting the structure of the compute graph (rather than the graphical model), the time per sweep of a full-scan Gibbs sampler on GLMs can be reduced from $O(d^2)$ to $O(d)$ in the number of parameters $d$ -- making high-dimensional GLMs feasible where traditional Gibbs is not, and outperforming HMC on effective samples per unit time in many regimes.
+JuliaBUGS already exposes the graph structure this approach relies on.
+The implementation must be correct and performant, validated against standard benchmarks with comparisons to both traditional Gibbs and HMC.
 
-Put simply, we want to enable users to provide multiple inputs to the model simultaneously by “stacking” the parameters into a higher-dimensional array.
+## Contributor-proposed Project
 
-The implementation can take various forms, as a team of developers who care about both performance and user experience, we are open to different approaches and discussions.
-One possible approach is to develop a mechanism that signals the code to process the given input as a batch rather than as individual entries. 
-A preliminary implementation can be found [here](https://github.com/torfjelde/Batching.jl).
+**Mentors**: Community
 
-## Targets for Benchmarking Samplers with vectorization, GPU and high-order derivative supports
+If you have an idea not listed here, propose it. Submit a short proposal with motivation, a concise plan, expected deliverables, and a timeline. Maintainers and mentors will review and help turn it into a plan. Be prepared to discuss scope with mentors early.
 
-**Mentors:** Kai Xu, Hong Ge
-
-**Project difficulty:** Medium
-
-**Project length:** 175 hrs
-
-**Description:**
-The project aims to develop a comprehensive collection of target distributions designed to study and benchmark Markov Chain Monte Carlo (MCMC) samplers in various computational environments. This collection will be an extension and enhancement of the existing Julia package, [VecTargets.jl](https://github.com/xukai92/VecTargets.jl), which currently offers limited support for vectorization, GPU acceleration, and high-order derivatives. The main objectives of this project include:
-  
-* Ensuring that the target distributions fully support vectorization and GPU acceleration
-* Making high-order derivatives (up to 3rd order) seamlessly integrable with the target distributions
-* Creating a clear and comprehensive documentation that outlines the capabilities and limitations of the project, including explicit details on cases where vectorization, GPU acceleration, or high-order derivatives are not supported.
-* Investigating and documenting how different Automatic Differentiation (AD) packages available in Julia can be combined or utilized to achieve efficient and accurate computation of high-order derivatives.
-  
-By achieving these goals, the project aims to offer a robust framework that can significantly contribute to the research and development of more efficient and powerful MCMC samplers, thereby advancing the field of computational statistics and machine learning.
-
+To discuss proposals and next steps, contact [Shravan Goswami](https://julialang.slack.com/team/U04UZB5U740) on the [Julia Slack](/slack/).

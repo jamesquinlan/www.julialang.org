@@ -1,8 +1,8 @@
 @def rss_pubdate = Date(2017, 11, 1)
-@def rss = """ GSoC 2017: Native Julia second order ODE and BVP solvers | My original GSoC project was about implementing native Julia solvers for solving boundary value problems (BVPs) that were determined from second order ordinary differential equations (ODEs). I started down the BVP path, built a shooting method to solve BVPs from initial value problems (IVPs), and the... """
+@def rss_description = """ GSoC 2017: Native Julia second order ODE and BVP solvers | My original GSoC project was about implementing native Julia solvers for solving boundary value problems (BVPs) that were determined from second order ordinary differential equations (ODEs). I started down the BVP path, built a shooting method to solve BVPs from initial value problems (IVPs), and the... """
 @def published = "1 November 2017"
 @def title = "GSoC 2017: Native Julia second order ODE and BVP solvers"
-@def authors = "Yingbo Ma, Chris Rackauckas, Jiahao Chen, Christoph Ortner"  
+@def authors = "Yingbo Ma, Chris Rackauckas, Jiahao Chen, Christoph Ortner"
 @def hascode = true
 @def hasmath = true
 
@@ -54,7 +54,7 @@ Note that symplectic integrator doesn't mean that it has exact conservation. The
 
 Again, I explored adaptivity and dense output in the IVP world. I implemented several adaptive Runge-Kutta-Nyström (RKN) solvers. The MIRK adaptivity and RKN adaptivity share one common theme, which is error estimation, and MIRK does it by using dense output. Calculating Poincaré section is an example of a practical usage of the dense output. When plotting the Poincaré section, we usually need to use [`saveat`]( https://docs.sciml.ai/dev/basics/common_solver_opts/#Output-Control-1) or [`ContinuousCallback`]( https://docs.sciml.ai/dev/features/callback_functions.html#ContinuousCallbacks-1), and both of them need dense output in order to do well. Dense output is essentially a continuous solution of a ODE. `saveat` uses dense output to evaluate values at the specified time, so the ODE integration can still be adaptive (the integrator doesn't need to hit the exact `saveat` point). `ContinuousCallback` performs root-finding on the dense output to find when does an event occur. Thus, high order dense output is important for calculating accurate `saveat` and `ContinuousCallback`. Here are two examples of plotting Poincaré section.
 
-#### Duffing oscillator
+### Duffing oscillator
 
 [Duffing oscillator](https://www.scholarpedia.org/article/Duffing_oscillator) is a forced oscillator that has nonlinear elasticity, which has the form
 
@@ -83,7 +83,7 @@ Then, we need to get the solution at $\omega t \mod 2\pi=0$ to plot the Poincar�
 
 ![duffing Poincaré section](/assets/blog/2017-11-01-gsoc-ode/duffing_poincare_0.svg)
 
-#### Driven pendulum
+### Driven pendulum
 
 Drive pendulum is a periodically forced pendulum, which has the form of
 

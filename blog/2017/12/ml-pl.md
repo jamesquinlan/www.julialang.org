@@ -1,8 +1,8 @@
 @def rss_pubdate = Date(2017, 12, 6)
-@def rss = """ On Machine Learning and Programming Languages | > Any sufficiently complicated machine learning system contains an ad-hoc, informally-specified, bug-ridden, slow implementation of half of a programming language.^greenspun ... """
+@def rss_description = """ On Machine Learning and Programming Languages | > Any sufficiently complicated machine learning system contains an ad-hoc, informally-specified, bug-ridden, slow implementation of half of a programming language.^greenspun ... """
 @def published = "6 December 2017"
 @def title = "On Machine Learning and Programming Languages"
-@def authors = "By Mike Innes (JuliaHub), David Barber (UCL), Tim Besard (UGent), James Bradbury (Salesforce Research), Valentin Churavy (MIT), Simon Danisch (MIT), Alan Edelman (MIT), Stefan Karpinski (JuliaHub), Jon Malmaud (MIT), Jarrett Revels (MIT), Viral Shah (JuliaHub), Pontus Stenetorp (UCL) and Deniz Yuret (Koç University)"  
+@def authors = "By Mike Innes (JuliaHub), David Barber (UCL), Tim Besard (UGent), James Bradbury (Salesforce Research), Valentin Churavy (MIT), Simon Danisch (MIT), Alan Edelman (MIT), Stefan Karpinski (JuliaHub), Jon Malmaud (MIT), Jarrett Revels (MIT), Viral Shah (JuliaHub), Pontus Stenetorp (UCL) and Deniz Yuret (Koç University)"
 @def hascode = true
 
 
@@ -43,7 +43,7 @@ The core reason for building new languages is simple: ML research has extremely 
 There’s a snag, though. These impressive optimisations rely on simplifying assumptions (ML models won’t be recursive, or need custom gradients, right?), which make it easier to apply optimisations or deploy to small devices. Unfortunately for engineers, model complexity has increased and researchers thoroughly enjoy violating these assumptions. Models now demand conditional branching (ok, easy enough to hack in), loops for recurrence (less easy but possible), and even [recursion over trees](https://arxiv.org/pdf/1503.00075.pdf) (virtually impossible to deal with). In many areas of ML, including [neural networks](https://blog.keras.io/the-future-of-deep-learning.html) and [probabilistic programming](https://eng.uber.com/pyro/), models are becoming increasingly like programs, including ones that reason about *other* programs (e.g. [program generators](https://arxiv.org/pdf/1705.03633.pdf) and [interpreters](https://arxiv.org/abs/1605.06640)), and with non-differentiable components like Monte Carlo Tree Search. It's enormously challenging to build runtimes that provide complete flexibility while achieving top performance, but increasingly the most powerful models and groundbreaking results need both.
 
 ~~~
-<img src="/assets/images/sentiment-treebank.png"/>
+<img src="/assets/images/sentiment-treebank.png" alt="Stanford Sentiment Treebank visualization"/>
 <div class="desc">
   Using ML with complex tree-structured data, like the <a href="https://nlp.stanford.edu/sentiment/treebank.html">Stanford Sentiment Treebank</a>, requires differentiable, recursive algorithms.
 </div>
@@ -80,7 +80,7 @@ ML engineers are increasingly interested in traditional [software engineering pr
 ~~~
 <div style="text-align:center">
 <a href="https://xkcd.com/1838/">
-<img height="350px" src="https://imgs.xkcd.com/comics/machine_learning_2x.png"/>
+<img style="height: 350px" src="https://imgs.xkcd.com/comics/machine_learning_2x.png" alt="XKCD comic: Machine Learning"/>
 </a>
 </div>
 <div class="desc">

@@ -9,18 +9,24 @@ function check_orgs()
 
     fpath = joinpath(dirname(dirname(@__DIR__)), "community", "organizations.md")
     conts = String(read(fpath))
-    occursin("## Julia GitHub Organizations", conts) || error("not reading the correct file $fpath")
+    occursin("## Julia Organizations", conts) || error("not reading the correct file $fpath")
 
     orgs = eachmatch(r"(?<url>https?://github\.com/[^/\s]+(?=\)))", conts)
 
-    println("Finding orgs with fewer than 2 public memers that are listed in https://julialang.org/community/organizations/")
+    println("Finding orgs with fewer than 2 public members that are listed in https://julialang.org/community/organizations/")
 
     num_below = 0
     for org_match in orgs
         org = split(org_match.captures[1], "https://github.com/", keepempty=false)[1]
         org = split(org, "http://github.com/", keepempty=false)[1]
-        members, page_data = GitHub.members(Owner(org), auth=myauth, public_only=true)
-        if length(members) < 2
+        members = nothing
+        try
+            members, page_data = GitHub.members(Owner(org), auth=myauth, public_only=true)
+        catch e
+            err_msg = sprint(showerror, e)
+            println("Error processing organization '$org':\n$err_msg")
+        end
+        if isnothing(members) || length(members) < 2
             println(" - $org $(length(members)) members")
             num_below += 1
         end

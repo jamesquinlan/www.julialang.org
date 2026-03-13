@@ -10,7 +10,7 @@ The following organizations have employed Julia core developers whose full-time 
 - [Relational AI](https://relational.ai/) uses Julia heavily in their product offerings and employs several developers focusing on core Julia development, particularly around improvements to GC and observability.
 - [MIT's Julia Lab](https://julia.mit.edu/) was the original home of many Julia core developers.
 
-Note that while these organizations are employing Julia core developers, decision making authority within the project rests solely with individual core developers and not their employers. For more information, see the <a href="/governance/">governance</a> page.
+Note that while these organizations are employing Julia core developers, decision making authority within the project rests solely with individual core developers and not their employers. For more information, see the [governance](/governance) page.
 
 ## Infrastructure
 
@@ -32,16 +32,13 @@ running:
 - [MIT's Julia Lab](https://julia.mit.edu/) is maintaining data center for the project space and providing a significant number of CI machines
 - [NVIDIA](nvidia.com) has provided both JuliaHub and the Julia Lab with a significant number of free GPUs across various generations of NVIDIA products
 - [Buildkite](https://buildkite.com) provides a free Buildkite account for use in Base Julia CI
+- [Cloudflare](https://buildkite.com) provides the Julia package servers with free CDN services
 
 ## Direct Funding
 
 A number of organizations and funding agencies are or have provided direct funding for Julia maintenance.
 
 ### Current funding
-
-- [NASA](nasa.gov) is funding efforts towards the creation of high quality released under award number 80NSSC22K1740. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Aeronautics and Space Administration.
-
-- Over the years, [Intel](intel.com) has provided significant funding continuing to support a small development contract for maintenance of Julia on Intel platforms and accelerators.
 
 - Julia receives individual donations from a larger number of individuals through [GitHub sponsors](https://github.com/sponsors/JuliaLang) and [NumFocus](https://numfocus.org/project/julia)
 

@@ -1,8 +1,8 @@
 @def rss_pubdate = Date(2019, 5, 2)
-@def rss = """ Beyond machine learning pipelines with MLJ | - learning curves (from `examples/random_forest.jl`)... """
+@def rss_description = """ Beyond machine learning pipelines with MLJ | - learning curves (from `examples/random_forest.jl`)... """
 @def published = "2 May 2019"
 @def title = "Beyond machine learning pipelines with MLJ"
-@def authors = "Anthony Blaom, Diego Arenas, Franz Kiraly, Yiannis Simillides, Sebastian Vollmer"  
+@def authors = "Anthony Blaom, Diego Arenas, Franz Kiraly, Yiannis Simillides, Sebastian Vollmer"
 @def hascode = true
 
 <!--
@@ -11,14 +11,14 @@
 -->
 
 ~~~
-<p float="left" align="middle">
-  <img style="width:40%;padding:0;" src="/assets/blog/2019-05-02-MLJ/learningcurves.png"/>
-  <img style="width:40%;padding-left:15px;" src="/assets/blog/2019-05-02-MLJ/heatmap.png"/>
+<p style="float: left" align="middle">
+  <img style="width:40%;padding:0;" src="/assets/blog/2019-05-02-MLJ/learningcurves.png" alt="MLJ learning curves"/>
+  <img style="width:40%;padding-left:15px;" src="/assets/blog/2019-05-02-MLJ/heatmap.png" alt="MLJ hyperparameter tuning heatmap"/>
 </p>
 
-<p float="left" align="middle">
-  <img style="width:40%;padding:0;" src="/assets/blog/2019-05-02-MLJ/wrapped_ridge.png"/>
-  <img style="width:40%;padding-left:15px;" src="/assets/blog/2019-05-02-MLJ/MLPackages.png"/>
+<p style="float: left" align="middle">
+  <img style="width:40%;padding:0;" src="/assets/blog/2019-05-02-MLJ/wrapped_ridge.png" alt="MLJ wrapped ridge regression"/>
+  <img style="width:40%;padding-left:15px;" src="/assets/blog/2019-05-02-MLJ/MLPackages.png" alt="Julia ML packages ecosystem"/>
 </p>
 ~~~
 
@@ -48,7 +48,7 @@ composition.
 &#9758; Video from [London Julia User Group meetup in March 2019](https://www.youtube.com/watch?v=CfHkjNmj1eE) (skip to [demo at 21'39](https://youtu.be/CfHkjNmj1eE?t=21m39s)) &nbsp;
 
 ~~~
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CfHkjNmj1eE?start=1300" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CfHkjNmj1eE?start=1300" style="border:none;" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></br>
 ~~~
 
 &#9758;  The MLJ [tutorials](https://alan-turing-institute.github.io/MLJTutorials/).
@@ -120,7 +120,7 @@ in prediction and training modes is different. This can be seen from
 the following schematic of a simple two-model stack, viewed as a
 network:
 
-![](/assets/blog/2019-05-02-MLJ/two_model_stack.png)
+![Two-model stack network diagram](/assets/blog/2019-05-02-MLJ/two_model_stack.png)
 
 ## Building a simple network
 

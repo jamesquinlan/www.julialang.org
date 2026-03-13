@@ -1,25 +1,31 @@
+@def title = "Google Season of Docs Projects"
+
 # Julia's Google Season of Docs Projects
 
 Below are the projects which have been proposed for Google Season of Docs under the umbrella of the Julia Language. If you have questions about potential projects, the first point of contact would be the mentor(s) listed on the project. If you are unable to get ahold of the potential mentor(s), you should email `jsoc@julialang.org` and CC `community@julialang.org`.
 
 We at the Julia Language are committed to making the application process and participation in GSoD with Julia accessible to everyone. If you have questions or requests, please do reach out and we will do our best to accommodate you.
 
-### The GSoD experience with The Julia Language
+## The GSoD experience with The Julia Language
 
 Learn from one of our technical writers about their experience with GSoD:
 ~~~
-<iframe width="100%" height="450" src="https://www.youtube-nocookie.com/embed/6s9J-ObQaAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="max-width:720px;margin:0 auto;">
+  <div class="ratio ratio-16x9 video-container">
+    <iframe src="https://www.youtube-nocookie.com/embed/6s9J-ObQaAs" title="YouTube video player" style="border:none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
 ~~~
 
 # Project Ideas for 2024
 
 Below you can find a running list of potential GSoD projects. If any of these are of interest to you, please reach out to the respective mentor(s).
 
-# Unifying the [JuliaHeath Organization](https://github.com/JuliaHealth) Documentation Landscape
+# Unifying the JuliaHealth Organization Documentation Landscape
 
-## About your organization 
-> [!Note]
-In this section, tell us about your organization or project in a few short paragraphs. What problem does your project solve? Who are your users and contributors? How long has your organization or project been in existence? Give some context to help us understand why funding your proposal would create a positive impact in open source and the world.
+## About your organization
+
+<!-- In this section, tell us about your organization or project in a few short paragraphs. What problem does your project solve? Who are your users and contributors? How long has your organization or project been in existence? Give some context to help us understand why funding your proposal would create a positive impact in open source and the world. -->
 
 The Julia Programming Language is an MIT-licensed high-performance programming language designed for speed, usability, and reproducibility within both scientific and general purpose computing.
 Currently the Julia community has over 7,000 registered Julia packages, 35 million+ downloads of Julia, and thousands of contributors worldwide.
@@ -34,8 +40,8 @@ As the entire JuliaHealth user community comprises more than 250 registered user
 Currently, there are various subecosystems such as the Medical Imaging and the Observational Health subecosystem with more subecosystems beginning to emerge.
 
 ## Your project’s problem
-> [!Note]
-Tell us about the problem your project will help solve. Why is it important to your organization or project to solve this problem?
+
+<!-- Tell us about the problem your project will help solve. Why is it important to your organization or project to solve this problem? -->
 
 With JuliaHealth's terrific growth over the years -- both in terms of growth in users, members, and actively maintained packages -- we are beginning to see the need for more unified documentation.
 Without this unified documentation, we are seeing:
@@ -55,8 +61,8 @@ Users and developers want to engage with the JuliaHealth community, but if we do
 - Additionally, as we construct solutions within JuliaHealth to address the needs we have encountered as a growing organization, we will share our insights to the broader Julia community to illustrate various methods other ecosystems within Julia can adapt to meet growing demand.
 
 ## Your project’s scope
-> [!Note]
-Tell us about what documentation your organization will create, update, or improve. If some work is deliberately not being done, include that information as well. Include a time estimate, and whether you have already identified organization volunteers and a technical writer to work with your project.
+
+<!-- Tell us about what documentation your organization will create, update, or improve. If some work is deliberately not being done, include that information as well. Include a time estimate, and whether you have already identified organization volunteers and a technical writer to work with your project. -->
 
 Although there are many subecosystems within JuliaHealth, our project will be scoped to specifically the Medical Imaging subecosystem as it has grown mature enough to encounter many of these problems already.
 Working on documentation around the Medical Imagining subecosystem will benefit the rest of the JuliaHealth ecosystem as it will provide a roadmap for how other subecosystems can best document themselves and support their users.
@@ -74,12 +80,12 @@ This includes:
 - Add FAQ or support page
 - Define and implement tracking metrics to monitor user engagement and interaction with the platform
      - Using an open source and GDPR compliant technology like GoatCounter
-     
+
 Once this initial groundwork is done, we will then address some of the specific core tooling within the Medical Imaging subecosystem.
 Due to the modular nature of packages within this subecosystem, we will need to improve documentation across various packages to show what they should be used for, how they integrate with one another, and how to onboard as a potential new contributor:
 
 - Documentation tasks for [MedImage]( https://github.com/JuliaHealth/MedImage.jl)
-     - Introduction to the theory of medical imaging formats and spatial metadata 
+     - Introduction to the theory of medical imaging formats and spatial metadata
      - Describe how to load and save image
      - Describe how apply basic transformation using MedImage
 - Documentation tasks for [MedEye3d](https://github.com/JuliaHealth/MedEye3d.jl)
@@ -104,13 +110,13 @@ Finally, if time permits, there will be some additional stretch goals that we wo
 - Page for research accomplishments within JuliaHealth
 - Write a JuliaHealth blog entry on a Medeye topic to broaden project reach
 
-#### Technical Writer
+### Technical Writer
 
 Name: [Sneha Pandey](https://github.com/sneha9231)
 
 Sneha Pandey is a sophomore specializing in AI and ML and also serves as a Microsoft Learn Student Ambassador. Through this role, she had refined her ability to communicate complex concepts effectively to diverse audiences. Additionally, She had gained experience as a content writer, crafting content for her university. She has hands-on experience in developing various mini projects, such as a WhatsApp bot and ML captioning models using Streamlit and Python. Her familiarity with Julia stems from previous engagements in medical imaging alongside MD PhD Msc Jakub Mitura. Moreover, She ensured comprehensive documentation of her personal projects using Documenter.jl. These experiences collectively equip her with the skills and proficiency required to excel as a technical writer within the Julia ecosystem.
 
-#### Volunteer Roles
+### Volunteer Roles
 **Volunteer 1: General JuliaHealth Organization Volunteer:**
 
 Name: Jacob S. Zelko
@@ -161,14 +167,14 @@ To explicitly enumerate what work is out of scope for this project, we do not pl
      - Adding docstrings or crosslinks may fall in scope depending on the needs per task
 
 ## Measuring your project’s success
-> [!Note]
-How will you know that your new documentation has helped solve your problem? What metrics will you use, and how will you track them?
+
+<!-- How will you know that your new documentation has helped solve your problem? What metrics will you use, and how will you track them? -->
 
 Currently, the documentation we do have does not yet have support for documentation traffic analytics.
 As of this moment, our best direct source for traffic metrics is to use [JuliaHub](https://juliahub.com/ui/Packages?q=JuliaHealth/) to monitor package downloads and also to reference GitHub stars for a loose approximation of "discoverability".
 Additionally, we take advantage of the [The Julia Programming Language YouTube Channel](https://www.youtube.com/@TheJuliaLanguage) that we use to monitor engagement with our recorded [JuliaHealth Workgroup meetings](https://www.youtube.com/playlist?list=PLP8iPy9hna6QCTkFxfHs2Y4foaYBJAjzO).
 In these situations, potential users or contributors would have to know where to look to find these resources or entry points to our supported packages and their respective subecosystems.
-#### We would consider the project successful if :
+### We would consider the project successful if:
 
 For JuliaHealth, we would consider this project successful if:
 - We can readily track documentation traffic across packages
@@ -188,8 +194,8 @@ For JuliaHealth, we would consider this project successful if:
 - A new blog post is published
 
 ## Timeline
-> [!Note]
-How long do you estimate this work will take? Are you able to breakdown the tech writer tasks by month/week?
+
+<!-- How long do you estimate this work will take? Are you able to breakdown the tech writer tasks by month/week? -->
 
 We assume the tech writer will put in part time hours (10-20 hours/week) during this time.
 ### Monthly Plan
@@ -221,15 +227,15 @@ We assume the tech writer will put in part time hours (10-20 hours/week) during 
 This timeline is largely accurate but we expect that different packages or tasks may be slightly more challenging than others.
 The November time period gives us the opportunity to revisit any unfinished tasks and to potentially explore stretch goals if there were not many outstanding tasks left.
 
-### Communication Plan: 
-The primary communication channel we will use is [Julia Slack](https://julialang.org/slack/) and Dr. Jakub Mitura (MD, PhD) will be the individual responsible for all contact and mentoring throughout the project for regular updates and meetings.
+### Communication Plan:
+The primary communication channel we will use is [Julia Slack](/slack/) and Dr. Jakub Mitura (MD, PhD) will be the individual responsible for all contact and mentoring throughout the project for regular updates and meetings.
 Outside of Slack, email will be used to handle communications with GSoD organizers and administrators with Jakub Mitura's email being: [jakub.mitura14@gmail.com](mailto:jakub.mitura14@gmail.com).
 Volunteers will also be available for communication on the Slack on an as-needed basis.
 Additionally, project updates will be given through the [Julia Health Slack Channel](https://app.slack.com/client/T68168MUP/C012NN70P5K) which is where the majority of JuliaHealth communication takes place between members, users, and the rest of the Julia community.
 
 ## Project Budget
-> [!Note]
-You can include your budget in your proposal or as a separate link. If your budget is fewer than ten items, we recommend including it in your proposal.
+
+<!-- You can include your budget in your proposal or as a separate link. If your budget is fewer than ten items, we recommend including it in your proposal. -->
 
 | Budget item | Amount | Running total |
 | ------------- | ------------- | ------------- |
@@ -245,8 +251,8 @@ Additional justifications:
      - Sticker packs will also be given to welcome new contributors
 
 ### Additional information:
-> [!Note]
-Beyond the above proposal information, some additional notes about the composition of this project team:
+
+<!-- Beyond the above proposal information, some additional notes about the composition of this project team: -->
 
 **About GSoD Project Lead:**
 
@@ -262,5 +268,3 @@ Anshul Singhvi is a former Google Summer of Code student and has a vast swath of
 In particular, Anshul has membership with numerous Julia organizations and will be a crucial asset to not only what are best practices for documentation deployment but can also help with how to best unify JuliaHealth packages within JuliaHealth itself and potentially across the greater Julia landscape.
 His insight will be crucial to mitigate any redundant work or answer outsanding questions to make sure this project is ran as effectively as possible.
 Also, given Anshul's tremendous experience in delivering contract work, he will be key in making sure the metrics we investigate and report on for the case study in our final report will be done rigorously and to the best of the technical writer's ability given the data we have access to.
-
-</div>
